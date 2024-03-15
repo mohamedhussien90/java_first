@@ -1,0 +1,61 @@
+import java.util.ArrayList;
+
+class GroceryItemOrder {
+    private String name;
+    private int quantity;
+    private double pricePerUnit;
+
+    public GroceryItemOrder(String name, double pricePerUnit) {
+        this.name = name;
+        this.pricePerUnit = pricePerUnit;
+        this.quantity = 0;
+    }
+
+    public double getCost() {
+        return quantity * pricePerUnit;
+    }
+
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
+    }
+}
+
+class GroceryList {
+    private ArrayList<GroceryItemOrder> items;
+
+    public GroceryList() {
+        items = new ArrayList<>();
+    }
+
+    public void add(GroceryItemOrder item) {
+        if (items.size() < 10) {
+            items.add(item);
+        } else {
+            System.out.println("Cannot add more items. List is full.");
+        }
+    }
+
+    public double getTotalCost() {
+        double totalCost = 0;
+        for (GroceryItemOrder item : items) {
+            totalCost += item.getCost();
+        }
+        return totalCost;
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        GroceryItemOrder cookies = new GroceryItemOrder("Cookies", 2.30);
+        cookies.setQuantity(4);
+
+        GroceryItemOrder milk = new GroceryItemOrder("Milk", 1.50);
+        milk.setQuantity(2);
+
+        GroceryList list = new GroceryList();
+        list.add(cookies);
+        list.add(milk);
+
+        System.out.println("Total cost: $" + list.getTotalCost());
+    }
+}
