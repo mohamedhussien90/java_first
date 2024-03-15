@@ -1,0 +1,36 @@
+import java.util.ArrayList;
+import java.util.*;
+public class Main {
+    public static void main(String[] args) {
+        ArrayList<Integer> number = new ArrayList<>();
+        number.add(21);
+        number.add(40);
+        number.add(92);
+        number.add(57);
+        number.add(83);
+        number.add(41);
+        number.add(61);
+        number.add(22);
+        System.out.println(max(number));
+        System.out.println(sort(number));
+
+
+    }
+    public static Integer max(ArrayList<Integer> number){
+        if (number.isEmpty()){
+            return null;
+        }else {
+        int maximum = number.get(0);
+        for (int i = 1; i < number.size(); i++) {
+            if (maximum < number.get(i))
+                maximum = number.get(i);
+        }
+        return maximum;}
+    }
+    public static ArrayList<Integer> sort(ArrayList<Integer> number){
+        Collections.sort(number);
+        return number;
+
+
+    }
+}
